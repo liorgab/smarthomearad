@@ -12,7 +12,7 @@ public class Contact {
     private boolean contactIsActive;
     private String contactLastUpdated;
     private Address contactAddress;
-
+    // asd ads asd asd
     public Contact(){}
     public Contact(String contactFamily, String contactName, String contactEmail, String contactCellularNum,
                     Address address){
