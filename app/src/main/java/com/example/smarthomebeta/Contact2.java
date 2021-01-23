@@ -12,6 +12,7 @@ public class Contact2 {
     private boolean contactIsActive;
     private String contactLastUpdated;
     private Address contactAddress;
+    // ad asd asd asd asd asd asd asd asd d
 
     public Contact2(){}
     public Contact2(String contactFamily, String contactName, String contactEmail, String contactCellularNum,
