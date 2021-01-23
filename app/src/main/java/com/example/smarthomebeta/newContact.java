@@ -73,7 +73,7 @@ public class newContact extends AppCompatActivity {
         String contactCellularNum = contactCellularNumEdt.getText().toString();
         String contactPhoneNum = contactPhoneNumEdt.getText().toString();
         Address address = new Address( contactCity, contactStreet, contactStreetNum, contactApartmentNum, contactFloor, contactPhoneNum);
-        Contact2 contact = new Contact2(contactFamily, contactName, contactEmail, contactCellularNum,address);
+        Contact contact = new Contact(contactFamily, contactName, contactEmail, contactCellularNum,address);
         refContacts.child(UidContact).setValue(contact);
     }
 }

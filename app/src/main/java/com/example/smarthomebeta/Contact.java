@@ -4,34 +4,26 @@ import android.util.Log;
 
 import static com.example.smarthomebeta.Methods.dateAndTimeTostring;
 
-public class Contact extends Address {
+public class Contact {
     private String contactFamily;
     private String contactName;
     private String contactEmail;
     private String contactCellularNum;
-    private String contactPhoneNum;
-    private String contactCity;
-    private String contactStreet;
-    private String contactStreetNum;
-    private String contactApartmentNum;
-    private String contactFloor;
-    private String contactLastUpdated;
     private boolean contactIsActive;
+    private String contactLastUpdated;
+    private Address contactAddress;
 
     public Contact(){}
-    public Contact(String contactFamily, String contactName, String contactEmail, String contactCellularNum, String contactPhoneNum,
-                   String contactCity, String contactStreet, String contactStreetNum, String contactApartmentNum, String contactFloor){
+    public Contact(String contactFamily, String contactName, String contactEmail, String contactCellularNum,
+                    Address address){
         contactIsActive = true;
         this.contactFamily = contactFamily;
         this.contactName = contactName;
         this.contactEmail = contactEmail;
         this.contactCellularNum = contactCellularNum;
-        this.contactPhoneNum = contactPhoneNum;
-        this.contactCity = contactCity;
-        this.contactStreet = contactStreet;
-        this.contactStreetNum = contactStreetNum;
-        this.contactApartmentNum = contactApartmentNum;
-        this.contactFloor = contactFloor;
+        this.contactAddress = address;
+        this.contactIsActive=true;
+        this.contactLastUpdated = dateAndTimeTostring();
 
     }
 
@@ -67,44 +59,12 @@ public class Contact extends Address {
         this.contactCellularNum = contactCellularNum;
     }
 
-    public String getContactCity() {
-        return contactCity;
+    public boolean isContactIsActive() {
+        return contactIsActive;
     }
 
-    public void setContactCity(String contactCity) {
-        this.contactCity = contactCity;
-    }
-
-    public String getContactStreet() {
-        return contactStreet;
-    }
-
-    public void setContactStreet(String contactStreet) {
-        this.contactStreet = contactStreet;
-    }
-
-    public String getContactStreetNum() {
-        return contactStreetNum;
-    }
-
-    public void setContactStreetNum(String contactStreetNum) {
-        this.contactStreetNum = contactStreetNum;
-    }
-
-    public String getContactApartmentNumber() {
-        return contactApartmentNum;
-    }
-
-    public void setContactApartmentNumber(String contactApartmentNumber) {
-        this.contactApartmentNum = contactApartmentNumber;
-    }
-
-    public String getContactFloor() {
-        return contactFloor;
-    }
-
-    public void setContactFloor(String contactFloor) {
-        this.contactFloor = contactFloor;
+    public void setContactIsActive(boolean contactIsActive) {
+        this.contactIsActive = contactIsActive;
     }
 
     public String getContactLastUpdated() {
@@ -115,28 +75,12 @@ public class Contact extends Address {
         this.contactLastUpdated = contactLastUpdated;
     }
 
-    public boolean isContactIsActive() {
-        return contactIsActive;
+    public Address getContactAddress() {
+        return contactAddress;
     }
 
-    public void setContactIsActive(boolean contactIsActive) {
-        this.contactIsActive = contactIsActive;
-    }
-
-    public String getContactPhoneNum() {
-        return contactPhoneNum;
-    }
-
-    public void setContactPhoneNum(String contactPhoneNum) {
-        this.contactPhoneNum = contactPhoneNum;
-    }
-
-    public String getContactApartmentNum() {
-        return contactApartmentNum;
-    }
-
-    public void setContactApartmentNum(String contactApartmentNum) {
-        this.contactApartmentNum = contactApartmentNum;
+    public void setContactAddress(Address contactAddress) {
+        this.contactAddress = contactAddress;
     }
 }
 
