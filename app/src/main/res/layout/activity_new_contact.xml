@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:orientation="horizontal"
+    tools:context=".newContact">
+
+    <Space
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="20"/>
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="60"
+        android:gravity="center"
+        android:orientation="vertical">
+        <TextView
+            android:id="@+id/recordCountTxt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            />
+        <EditText
+            android:id="@+id/contactNameEdt"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="שם פרטי"/>
+
+        <EditText
+            android:id="@+id/contactFamilyEdt"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="שם משפחה"/>
+        <EditText
+            android:id="@+id/contactCityEdt"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="עיר"/>
+        <EditText
+            android:id="@+id/contactStreetEdt"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="רחוב"/>
+        <EditText
+            android:id="@+id/contactStreetNumEdt"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="מספר בית"/>
+        <EditText
+            android:id="@+id/contactApartmentNumberEdt"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="מספר דירה"/>
+        <EditText
+            android:id="@+id/contactFloorEdt"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="קומה(אופציונלי)"/>
+
+        <EditText
+            android:id="@+id/contactEmailEdt"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="כתובת מייל"/>
+        <EditText
+            android:id="@+id/contactCellularNumEdt"
+            android:layout_width="match_parent"
+            android:inputType="phone"
+            android:layout_height="wrap_content"
+            android:gravity="end"
+            android:hint="מס' טלפון"/>
+        <EditText
+            android:id="@+id/contactPhoneNumEdt"
+            android:layout_width="match_parent"
+            android:inputType="phone"
+            android:layout_height="wrap_content"
+            android:hint="טלפון אישי"
+            android:gravity="end" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="addContact"
+            android:text="שמור"/>
+
+    </LinearLayout>
+
+    <Space
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="20"/>
+
+</LinearLayout>
