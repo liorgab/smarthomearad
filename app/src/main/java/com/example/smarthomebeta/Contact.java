@@ -12,7 +12,7 @@ public class Contact {
     private boolean contactIsActive;
     private String contactLastUpdated;
     private Address contactAddress;
-    // asd ads asd asd
+
     public Contact(){}
     public Contact(String contactFamily, String contactName, String contactEmail, String contactCellularNum,
                     Address address){
@@ -21,10 +21,9 @@ public class Contact {
         this.contactName = contactName;
         this.contactEmail = contactEmail;
         this.contactCellularNum = contactCellularNum;
-        this.contactAddress = address;
         this.contactIsActive=true;
         this.contactLastUpdated = dateAndTimeTostring();
-
+        this.contactAddress = address;
     }
 
     public String getContactFamily() {

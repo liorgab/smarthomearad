@@ -3,6 +3,7 @@ package com.example.smarthomebeta;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -20,7 +21,8 @@ public class newContact extends AppCompatActivity {
     TextView recordcount;
     //Contact contact = new Contact();
     EditText contactFamilyEdt,contactNameEdt,contactCityEdt,contactStreetEdt,contactStreetNumEdt,contactApartmentNumberEdt,contactFloorEdt,contactEmailEdt,contactCellularNumEdt,contactPhoneNumEdt;
-
+    String UidContact;
+    Boolean connectToHouse = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,7 +40,6 @@ public class newContact extends AppCompatActivity {
         contactCellularNumEdt = (EditText)findViewById(R.id.contactCellularNumEdt);
         contactPhoneNumEdt = (EditText)findViewById(R.id.contactPhoneNumEdt);
     }
-
     public void addContact(View view) {
         refContacts.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
@@ -60,8 +61,8 @@ public class newContact extends AppCompatActivity {
 
     }
     public void pushContact(String count){
-        int childCount = 10000+Integer.parseInt(count);
-        String UidContact = ""+childCount;
+        int childCount = Constants.CONTACT_FIRST_REC_ID+Integer.parseInt(count);
+        UidContact = ""+childCount;
         String contactFamily = contactFamilyEdt.getText().toString();
         String contactName=contactNameEdt.getText().toString();
         String contactCity= contactCityEdt.getText().toString();
@@ -75,5 +76,15 @@ public class newContact extends AppCompatActivity {
         Address address = new Address( contactCity, contactStreet, contactStreetNum, contactApartmentNum, contactFloor, contactPhoneNum);
         Contact contact = new Contact(contactFamily, contactName, contactEmail, contactCellularNum,address);
         refContacts.child(UidContact).setValue(contact);
+        if (connectToHouse) {
+            Intent intent = new Intent(this,newHouse.class);
+            intent.putExtra("contact",UidContact);
+            startActivity(intent);
+        }
+    }
+
+    public void addContactAndHouse(View view) {
+        connectToHouse = true;
+        addContact(view);
     }
 }

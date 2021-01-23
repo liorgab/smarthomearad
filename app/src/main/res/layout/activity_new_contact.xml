@@ -85,6 +85,11 @@
             android:layout_height="wrap_content"
             android:onClick="addContact"
             android:text="שמור"/>
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="addContactAndHouse"
+            android:text="שמור והוסף בית"/>
 
     </LinearLayout>
 

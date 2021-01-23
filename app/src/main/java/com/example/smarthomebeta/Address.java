@@ -1,70 +1,68 @@
 package com.example.smarthomebeta;
 
 public class Address {
-    private String city;
-    private String streetName;
-    private String streetNumber;
-    private String apartmentNumber;
-    private String floor;
-    private String phoneNumber;
+    private String addressCity;
+    private String addressStreetName;
+    private String addressStreetNumber;
+    private String addressApartmentNumber;
+    private String addressFloor;
+    private String addressPhoneNumber;
 
     public Address(){}
     public Address(String city, String streetName, String streetNumber, String apartmentNumber, String floor, String phoneNumber){
-        this.city = city;
-        this.streetName = streetName;
-        this.streetNumber = streetNumber;
-        this.apartmentNumber = apartmentNumber;
-        this.floor = floor;
-        this.phoneNumber = phoneNumber;
-    }
-// asdasdasdads
-    public String getPhoneNumber() {
-        return phoneNumber;
+        this.addressCity = city;
+        this.addressStreetName = streetName;
+        this.addressStreetNumber = streetNumber;
+        this.addressApartmentNumber = apartmentNumber;
+        this.addressFloor = floor;
+        this.addressPhoneNumber = phoneNumber;
     }
 
-    public void setPhoneNumber(String phoneNumber) {
-        this.phoneNumber = phoneNumber;
+    public String getAddressCity() {
+        return addressCity;
     }
 
-    public String getCity() {
-        return city;
+    public void setAddressCity(String addressCity) {
+        this.addressCity = addressCity;
     }
 
-    public void setCity(String city) {
-        this.city = city;
+    public String getAddressStreetName() {
+        return addressStreetName;
     }
 
-    public String getStreetName() {
-        return streetName;
+    public void setAddressStreetName(String addressStreetName) {
+        this.addressStreetName = addressStreetName;
     }
 
-    public void setStreetName(String streetName) {
-        this.streetName = streetName;
+    public String getAddressStreetNumber() {
+        return addressStreetNumber;
     }
 
-    public String getStreetNumber() {
-        return streetNumber;
+    public void setAddressStreetNumber(String addressStreetNumber) {
+        this.addressStreetNumber = addressStreetNumber;
     }
 
-    public void setStreetNumber(String streetNumber) {
-        this.streetNumber = streetNumber;
+    public String getAddressApartmentNumber() {
+        return addressApartmentNumber;
     }
 
-    public String getApartmentNumber() {
-        return apartmentNumber;
+    public void setAddressApartmentNumber(String addressApartmentNumber) {
+        this.addressApartmentNumber = addressApartmentNumber;
     }
 
-    public void setApartmentNumber(String apartmentNumber) {
-        this.apartmentNumber = apartmentNumber;
+    public String getAddressFloor() {
+        return addressFloor;
     }
 
-    public String getFloor() {
-        return floor;
+    public void setAddressFloor(String addressFloor) {
+        this.addressFloor = addressFloor;
     }
 
-    public void setFloor(String floor) {
-        this.floor = floor;
+    public String getAddressPhoneNumber() {
+        return addressPhoneNumber;
     }
 
-
+    public void setAddressPhoneNumber(String addressPhoneNumber) {
+        this.addressPhoneNumber = addressPhoneNumber;
+    }
 }

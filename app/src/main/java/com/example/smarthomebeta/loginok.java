@@ -19,4 +19,10 @@ public class loginok extends AppCompatActivity {
         startActivity(t1);
 
     }
+
+    public void housemenu(View view) {
+        Intent t1 = new Intent(this,newHouse.class);
+        startActivity(t1);
+
+    }
 }
