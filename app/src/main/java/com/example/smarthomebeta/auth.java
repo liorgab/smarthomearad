@@ -16,6 +16,7 @@ import android.text.style.ClickableSpan;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -31,12 +32,13 @@ import static com.example.smarthomebeta.FBref.mAuth;
 import static com.example.smarthomebeta.FBref.refUsers;
 
 public class auth extends AppCompatActivity {
-    Boolean registered;
+    Boolean registered, stayConnected;
     TextView regorlogtxt, reglogoption;
     Button regorlogbtn;
     EditText usernameedt, fullnameedt,phonenumedt, emailedt, passwordedt;
     User dbuser;
     String uid;
+    CheckBox cbStayConnected;
 
 
 
@@ -52,16 +54,31 @@ public class auth extends AppCompatActivity {
         fullnameedt = (EditText)findViewById(R.id.fullnameedt);
         phonenumedt = (EditText)findViewById(R.id.phonenumedt);
         regorlogbtn = (Button)findViewById(R.id.regorlogbtn);
+        cbStayConnected = (CheckBox)findViewById(R.id.cbStayConnected);
 
-
-
+        stayConnected = false;
         registered = true;
-
-
         regoption();
 
     }
 
+    @Override
+    protected void onStart() {
+        super.onStart();
+        SharedPreferences settings=getSharedPreferences("PREFS_NAME",MODE_PRIVATE);
+        Boolean isChecked=settings.getBoolean("stayConnect",false);
+        Intent si = new Intent(auth.this,loginok.class);
+        if (mAuth.getCurrentUser()!=null && isChecked) {
+            stayConnected=true;
+            si.putExtra("newuser",false);
+            startActivity(si);
+        }
+    }
+    @Override
+    protected void onPause() {
+        super.onPause();
+        if (stayConnected) finish();
+    }
 
     private void regoption() {
         SpannableString ss = new SpannableString("אינך רשום עוד במערכת? הירשם כאן!");
@@ -111,10 +128,13 @@ public class auth extends AppCompatActivity {
                         public void onComplete(@NonNull Task<AuthResult> task) {
                             pd.dismiss();
                             if (task.isSuccessful()) {
+                                SharedPreferences settings=getSharedPreferences("PREFS_NAME",MODE_PRIVATE);
+                                SharedPreferences.Editor editor=settings.edit();
+                                editor.putBoolean("stayConnect",cbStayConnected.isChecked());
+                                editor.commit();
                                 Log.d("MainActivity", "signinUserWithEmail:success");
                                 Toast.makeText(auth.this, "Login Success", Toast.LENGTH_SHORT).show();
                                 Intent si = new Intent(auth.this,loginok.class);
-                                si.putExtra("newuser",false);
                                 startActivity(si);
                             } else {
                                 Log.d("MainActivity", "signinUserWithEmail:fail");
@@ -133,7 +153,10 @@ public class auth extends AppCompatActivity {
                         public void onComplete(@NonNull Task<AuthResult> task) {
                             pd.dismiss();
                             if (task.isSuccessful()) {
-
+                                SharedPreferences settings=getSharedPreferences("PREFS_NAME",MODE_PRIVATE);
+                                SharedPreferences.Editor editor=settings.edit();
+                                editor.putBoolean("stayConnect",cbStayConnected.isChecked());
+                                editor.commit();
                                 Log.d("MainActivity", "createUserWithEmail:success");
                                 FirebaseUser user = mAuth.getCurrentUser();
                                 uid = user.getUid();
@@ -141,7 +164,6 @@ public class auth extends AppCompatActivity {
                                 refUsers.child(uid).setValue(dbuser);
                                 Toast.makeText(auth.this, "Successful registration", Toast.LENGTH_SHORT).show();
                                 Intent si = new Intent(auth.this,loginok.class);
-                                si.putExtra("newuser",true);
                                 startActivity(si);
                             } else {
                                 if (task.getException() instanceof FirebaseAuthUserCollisionException)

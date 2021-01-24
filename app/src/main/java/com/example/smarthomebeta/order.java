@@ -46,15 +46,14 @@ public class order extends AppCompatActivity {
                 {
                     String count = ""+snapshot.getChildrenCount();
                     // Log.d("TAG", "itemName: " +snapshot);
-                    int i = 0;
+
                     for(DataSnapshot item_snapshot:snapshot.getChildren()) {
-                        i++;
-                        if (i<10 ) {
+
                             data.add(item_snapshot.child("itemName").getValue().toString());
                             Log.d("item name ",item_snapshot.child("itemName").getValue().toString());
                             Log.d("item Key",item_snapshot.getKey().toString());
 
-                        }
+
 
                     }
                     Log.d("data after snap",data.toString());
@@ -65,11 +64,11 @@ public class order extends AppCompatActivity {
                 public void onCancelled(@NonNull DatabaseError error) {
                 }
             });
-        data.clear();
-        for(int i=1;i<10;i++) {
-            data.add("this is item " + i);
-        }
-        Log.d("data after string",data.toString());
+        //data.clear();
+       //for(int i=1;i<10;i++) {
+       //   data.add("this is item " + i);
+        //}
+       Log.d("data after string",data.toString());
 
     }
 
