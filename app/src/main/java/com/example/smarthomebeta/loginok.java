@@ -25,4 +25,9 @@ public class loginok extends AppCompatActivity {
         startActivity(t1);
 
     }
+    public void ordermenu(View view) {
+        Intent t1 = new Intent(this,order.class);
+        startActivity(t1);
+
+    }
 }

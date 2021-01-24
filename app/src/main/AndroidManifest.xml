@@ -9,7 +9,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.SmartHomeBeta">
-        <activity android:name=".newHouse"></activity>
+        <activity
+            android:name=".order"
+            android:label="@string/title_activity_order"
+            android:theme="@style/Theme.SmartHomeBeta.NoActionBar"></activity>
+        <activity android:name=".newHouse" />
         <activity android:name=".newContact" />
         <activity android:name=".Contactmenu" />
         <activity android:name=".loginok" />

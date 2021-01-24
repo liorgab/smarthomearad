@@ -15,6 +15,8 @@ public class Constants {
     public static FirebaseDatabase FBDB = FirebaseDatabase.getInstance();
     public static DatabaseReference REF_USERS=FBDB.getReference("Users");
     public static DatabaseReference REF_CONTACTS = FBDB.getReference("contacts");
+    public static DatabaseReference REF_ITEMS = FBDB.getReference("items");
+
     public static DatabaseReference REF_PRIVATE = FBDB.getReference("projects/"+PRIVATE_PROJECT_NAME);
     public static DatabaseReference REF_PRIVATE_CURRENT_YEAR = REF_PRIVATE.child("Buildings").child(PRIVATE_PROJECT_NAME+CURRENT_YEAR.toString()).
                                     child("Apartments");
