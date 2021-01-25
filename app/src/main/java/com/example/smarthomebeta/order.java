@@ -33,43 +33,44 @@ public class order extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.order_list);
         ListView lv = (ListView) findViewById(R.id.orderListview);
-        importListItems();
-        lv.setAdapter(new myListAdapter(this,R.layout.order_list_item,data));
+        data = importListItems();
 
+        Log.d("data after 3",data.toString());
+
+        lv.setAdapter(new myListAdapter(this,R.layout.order_list_item,data));
+        Log.d("data after 4",data.toString());
 
     }
-    private void importListItems() {
+    private ArrayList<String> importListItems() {
+        ArrayList<String> data = new ArrayList<String>();
 
         Constants.REF_ITEMS.addListenerForSingleValueEvent(new ValueEventListener() {
-                @Override
+
+            @Override
                 public void onDataChange(@NonNull DataSnapshot snapshot)
                 {
+                    Log.d("TAG", "data after 0: " +snapshot);
+                    String strData = ""+snapshot;
                     String count = ""+snapshot.getChildrenCount();
-                    // Log.d("TAG", "itemName: " +snapshot);
 
                     for(DataSnapshot item_snapshot:snapshot.getChildren()) {
-
                             data.add(item_snapshot.child("itemName").getValue().toString());
-                            Log.d("item name ",item_snapshot.child("itemName").getValue().toString());
-                            Log.d("item Key",item_snapshot.getKey().toString());
-
-
-
+                            //Log.d("item name ",item_snapshot.child("itemName").getValue().toString());
+                            //Log.d("item Key",item_snapshot.getKey().toString());
                     }
-                    Log.d("data after snap",data.toString());
-
-
+                    Log.d("data after 1",data.toString());
                 }
                 @Override
                 public void onCancelled(@NonNull DatabaseError error) {
                 }
             });
-        //data.clear();
-       //for(int i=1;i<10;i++) {
-       //   data.add("this is item " + i);
-        //}
-       Log.d("data after string",data.toString());
 
+        data.clear();
+        for(int i=1;i<10;i++) {
+          data.add("this is item " + i);
+        }
+       Log.d("data after 2",data.toString());
+       return data;
     }
 
     private class myListAdapter extends ArrayAdapter<String> {
@@ -89,16 +90,19 @@ public class order extends AppCompatActivity {
                 ViewHolder viewHolder = new ViewHolder();
                 viewHolder.itemImage = (ImageView) convertView.findViewById(R.id.itemImageIv);
                 viewHolder.itemName = (TextView) convertView.findViewById(R.id.itemNameTv);
+                viewHolder.subOne = (Button) convertView.findViewById(R.id.subOneBtn);
+                viewHolder.totalItems = (TextView) convertView.findViewById(R.id.itemTotalTv);
                 viewHolder.addOne = (Button) convertView.findViewById(R.id.addOneBtn);
                 viewHolder.addOne.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
                         Toast.makeText(getContext(), "add clicked for list item" + position ,Toast.LENGTH_LONG ).show();
                         Log.d("TAG", "onClick: "+position);
+                        //Integer total = Integer.valueOf(viewHolder.totalItems.getText().toString());
+                        //total = (Integer.valueOf(total)+1);
+                        //viewHolder.totalItems = (TextView) total.toString();
                     }
                 });
-                viewHolder.subOne = (Button) convertView.findViewById(R.id.subOneBtn);
-                viewHolder.totalItems = (TextView) convertView.findViewById(R.id.itemTotalTv);
                 convertView.setTag(viewHolder);
             }
             else {

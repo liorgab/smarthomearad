@@ -1,7 +1,5 @@
 package com.example.smarthomebeta;
 
-import android.util.Log;
-
 import androidx.annotation.NonNull;
 
 import com.google.firebase.database.DataSnapshot;
@@ -23,9 +21,19 @@ public class Methods {
         return strDate;
     }
 
+    public static DataSnapshot getDataSnapshot(DatabaseReference dbref) {
+        final DataSnapshot[] dataSnapshot = new DataSnapshot[1];
+        dbref.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                dataSnapshot[0] = snapshot;
+            }
 
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
 
-
-
-
+            }
+        });
+    return dataSnapshot[0];
+    }
 }
