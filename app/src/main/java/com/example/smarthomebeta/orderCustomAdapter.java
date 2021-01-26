@@ -55,6 +55,8 @@ public class orderCustomAdapter extends ArrayAdapter<orderDataModel> implements 
 
                 Log.d("TAG", "onClick: "+dataSet.get(position).toString());
                 dataModel.setTotalItem(addTotal+1);
+                notifyDataSetChanged();
+
 
 
                 break;
@@ -66,7 +68,8 @@ public class orderCustomAdapter extends ArrayAdapter<orderDataModel> implements 
                 if (subTotal>0) {
                     dataModel.setTotalItem(subTotal-1);
                 }
-
+                //calculateTotalPrice(dataset);
+                notifyDataSetChanged();
                 break;
         }
     }
