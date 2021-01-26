@@ -39,6 +39,7 @@ public class order extends AppCompatActivity {
         totalPrice = (TextView) findViewById(R.id.totalmoneytv);
         dataModels = new ArrayList<>();
         itemCatalogNum = new ArrayList<Integer>();
+
         Constants.REF_ITEMS.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -48,12 +49,12 @@ public class order extends AppCompatActivity {
 
                     itemCatalogNum.add(Integer.parseInt(data.getKey()));
                     String itemName = data.child("itemName").getValue().toString();
-                    Long itemprice =  Long.valueOf((Long) data.child("itemPrice").getValue());
+                    Integer itemPrice =  Long.valueOf((Long) data.child("itemPrice").getValue()).intValue();
                     Long itemDisplay =  Long.valueOf((Long) data.child("ItemDisplay").getValue());
-                    Log.d("TAG", "itemDisplay: " + itemprice);
+                    Log.d("TAG", "itemDisplay: " + itemPrice);
 
                     if (itemDisplay == 1) {
-                        dataModels.add(new orderDataModel(itemName,itemName+".png",0, itemprice));
+                        dataModels.add(new orderDataModel(itemName,itemName+".png",0, itemPrice,0));
                     }
                 }
                 adapter= new orderCustomAdapter(dataModels,getApplicationContext());

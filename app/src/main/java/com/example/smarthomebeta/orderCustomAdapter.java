@@ -22,6 +22,8 @@ public class orderCustomAdapter extends ArrayAdapter<orderDataModel> implements 
 
     private static class ViewHolder {
         TextView itemName;
+        TextView itemPrice;
+        TextView totalPrice;
         EditText totalItems;
         ImageView itemImage;
         Button addBtn;
@@ -33,7 +35,6 @@ public class orderCustomAdapter extends ArrayAdapter<orderDataModel> implements 
         this.dataSet = data;
         this.mContext=context;
     }
-
     @Override
     public void onClick(View v) {
         int position=(Integer) v.getTag();
@@ -45,30 +46,28 @@ public class orderCustomAdapter extends ArrayAdapter<orderDataModel> implements 
         switch (v.getId())
         {
             case R.id.itemNameTv:
-                Snackbar.make(v, "Release date " +dataModel.getItemName(), Snackbar.LENGTH_LONG)
-                        .setAction("No action", null).show();
+                //Snackbar.make(v, "Release date " +dataModel.getItemName(), Snackbar.LENGTH_LONG)
+                //        .setAction("No action", null).show();
                 break;
             case R.id.addOneBtn:
-                Snackbar.make(v, "button add " , Snackbar.LENGTH_LONG)
-                        .setAction("No action", null).show();
-                Integer addTotal = dataModel.getTotalItem();
+                //Snackbar.make(v, "button add " , Snackbar.LENGTH_LONG)
+                //        .setAction("No action", null).show();
+                Integer addTotal = dataModel.getTotalItem()+1;
 
                 Log.d("TAG", "onClick: "+dataSet.get(position).toString());
-                dataModel.setTotalItem(addTotal+1);
+                dataModel.setTotalItem(addTotal);
+                dataModel.setTotalPrice(addTotal*dataModel.getItemPrice());
+                Log.d("TAG", "getTotalPrice: "+dataModel.getTotalPrice().toString());
                 notifyDataSetChanged();
-
-
-
                 break;
             case R.id.subOneBtn:
-                Snackbar.make(v, "button sub " , Snackbar.LENGTH_LONG)
-                        .setAction("No action", null).show();
+                //Snackbar.make(v, "button sub " , Snackbar.LENGTH_LONG)
+                //        .setAction("No action", null).show();
                 Integer subTotal = dataModel.getTotalItem();
-                Log.d("TAG", "onClick: "+subTotal.toString());
                 if (subTotal>0) {
                     dataModel.setTotalItem(subTotal-1);
+                    dataModel.setTotalPrice((subTotal-1)*dataModel.getItemPrice());
                 }
-                //calculateTotalPrice(dataset);
                 notifyDataSetChanged();
                 break;
         }
@@ -90,6 +89,8 @@ public class orderCustomAdapter extends ArrayAdapter<orderDataModel> implements 
             LayoutInflater inflater = LayoutInflater.from(getContext());
             convertView = inflater.inflate(R.layout.order_list_item, parent, false);
             viewHolder.itemName = (TextView) convertView.findViewById(R.id.itemNameTv);
+            viewHolder.itemPrice = (TextView) convertView.findViewById(R.id.itemPriceTv);
+            viewHolder.totalPrice = (TextView) convertView.findViewById(R.id.totalPriceTv);
             viewHolder.totalItems = (EditText) convertView.findViewById(R.id.itemTotalEt);
             viewHolder.itemImage = (ImageView) convertView.findViewById(R.id.itemImageIv);
             viewHolder.addBtn = (Button) convertView.findViewById(R.id.addOneBtn) ;

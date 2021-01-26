@@ -8,45 +8,55 @@ public class orderDataModel {
     String itemName;
     String itemImage;
     Integer totalItem;
-    Long ItemPrice;
+    Integer itemPrice;
+    Integer totalPrice;
 
-    public orderDataModel(String itemName, String itemImage, Integer totalItem , Long ItemPrice) {
+    public orderDataModel(String itemName, String itemImage, Integer totalItem , Integer itemPrice,Integer totalPrice) {
         this.itemName=itemName;
         this.itemImage=itemImage;
         this.totalItem=totalItem;
-        this.ItemPrice = ItemPrice;
+        this.itemPrice = itemPrice;
+        this.totalPrice = totalPrice;
 
-    }
-
-    public Long getItemPrice() {
-        return ItemPrice;
-    }
-
-    public void setItemPrice(Long itemPrice) {
-        ItemPrice = itemPrice;
     }
 
     public String getItemName() {
         return itemName;
     }
 
-    public String getItemImage() {
-        return itemImage;
-    }
-
-    public Integer getTotalItem() {
-        return totalItem;
-    }
-
     public void setItemName(String itemName) {
         this.itemName = itemName;
+    }
+
+    public String getItemImage() {
+        return itemImage;
     }
 
     public void setItemImage(String itemImage) {
         this.itemImage = itemImage;
     }
 
+    public Integer getTotalItem() {
+        return totalItem;
+    }
+
     public void setTotalItem(Integer totalItem) {
         this.totalItem = totalItem;
+    }
+
+    public Integer getItemPrice() {
+        return itemPrice;
+    }
+
+    public void setItemPrice(Integer itemPrice) {
+        this.itemPrice = itemPrice;
+    }
+
+    public Integer getTotalPrice() {
+        return totalPrice;
+    }
+
+    public void setTotalPrice(Integer totalPrice) {
+        this.totalPrice = totalPrice;
     }
 }
