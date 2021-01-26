@@ -12,7 +12,6 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
-import com.google.android.material.snackbar.Snackbar;
 import java.util.ArrayList;
 
 public class orderCustomAdapter extends ArrayAdapter<orderDataModel> implements View.OnClickListener{
@@ -80,7 +79,7 @@ public class orderCustomAdapter extends ArrayAdapter<orderDataModel> implements 
         orderDataModel dataModel = getItem(position);
         // Check if an existing view is being reused, otherwise inflate the view
         ViewHolder viewHolder; // view lookup cache stored in tag
-
+        Integer totalCost = 0;
         final View result;
 
         if (convertView == null) {
@@ -108,16 +107,16 @@ public class orderCustomAdapter extends ArrayAdapter<orderDataModel> implements 
         lastPosition = position;
 
         viewHolder.itemName.setText(dataModel.getItemName());
-        //viewHolder.totalItems.setText(dataModel.getTotalItem());
         viewHolder.totalItems.setText(dataModel.getTotalItem().toString());
-        // Log.d("TAG", "setText: " +dataModel.getTotalItem().toString());
+        viewHolder.itemPrice.setText(dataModel.getItemPrice().toString());
+        viewHolder.totalPrice.setText(dataModel.getTotalPrice().toString());
         viewHolder.itemName.setOnClickListener(this);
         viewHolder.addBtn.setOnClickListener(this);
         viewHolder.addBtn.setTag(position);
         viewHolder.subBtn.setOnClickListener(this);
         viewHolder.subBtn.setTag(position);
         viewHolder.itemName.setTag(position);
-        // Return the completed view to render on screen
+         // Return the completed view to render on screen
         return convertView;
     }
 

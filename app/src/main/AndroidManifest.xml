@@ -10,7 +10,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.SmartHomeBeta">
         <activity
-            android:name=".order"
+            android:name=".newOrder"
             android:label="@string/title_activity_order"
             android:theme="@style/Theme.SmartHomeBeta.NoActionBar"></activity>
         <activity android:name=".newHouse" />

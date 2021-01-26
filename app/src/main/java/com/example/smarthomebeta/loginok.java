@@ -30,7 +30,7 @@ public class loginok extends AppCompatActivity {
 
     }
     public void ordermenu(View view) {
-        Intent t1 = new Intent(this,order.class);
+        Intent t1 = new Intent(this, newOrder.class);
         startActivity(t1);
 
     }

@@ -18,14 +18,15 @@ public class Constants {
     public static DatabaseReference REF_USERS=FBDB.getReference("Users");
     public static DatabaseReference REF_CONTACTS = FBDB.getReference("contacts");
     public static DatabaseReference REF_ITEMS = FBDB.getReference("items");
+    public static DatabaseReference REF_ORDERS = FBDB.getReference("orders");
 
     public static DatabaseReference REF_PRIVATE = FBDB.getReference("projects/"+PRIVATE_PROJECT_NAME);
     public static DatabaseReference REF_PRIVATE_CURRENT_YEAR = REF_PRIVATE.child("Buildings").child(PRIVATE_PROJECT_NAME+CURRENT_YEAR.toString()).
                                     child("Apartments");
 
+
     // Storage refrance
     public static StorageReference STORAGE = FirebaseStorage.getInstance().getReference();
     public static StorageReference REF_ITEM_IMAGES_SMALL = STORAGE.child("/images/itemImages/itemImagesSmall");
-
 
 }

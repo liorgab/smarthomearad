@@ -12,16 +12,24 @@
 
         <TextView
             android:id="@+id/clientnametv"
-            android:layout_width="wrap_content"
+            android:layout_width="49dp"
             android:layout_height="wrap_content"
             android:layout_weight="2"
-            android:text="לקוח:"/>
+            android:text="לקוח:" />
+
         <TextView
             android:id="@+id/orderidtv"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="2"
-            android:text="מס' הזמנה:"/>
+            android:text="מס' הזמנה:" />
+
+        <Button
+            android:layout_width="13dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:onClick="calcTotal"
+            android:text="Calc" />
 
 
     </LinearLayout>
