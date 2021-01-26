@@ -1,5 +1,7 @@
 package com.example.smarthomebeta;
 
+import android.util.Log;
+
 import androidx.annotation.NonNull;
 
 import com.google.firebase.database.DataSnapshot;
@@ -27,6 +29,7 @@ public class Methods {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 dataSnapshot[0] = snapshot;
+                Log.d("TAG", "onCreate: "+dataSnapshot[0]);
             }
 
             @Override
@@ -34,6 +37,6 @@ public class Methods {
 
             }
         });
-    return dataSnapshot[0];
+        return dataSnapshot[0];
     }
 }
